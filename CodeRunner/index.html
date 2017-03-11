@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app="codeRunner">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="homeCtrl.js"></script>
+  </head>
+  <body ng-controller="homeCtrl">
+    <div>
+      <p>
+        Code to run:
+      </p>
+      <form>
+        <textarea rows="30" cols="80" ng-model="code"></textarea>
+        <br>
+        <input type="submit" ng-click="sendCode()">
+      </form>
+      <br>
+      <br>
+
+      <b>Output:</b>  <pre>{{stdout.data}}</pre>
+
+    </div>
+  </body>
+</html>
