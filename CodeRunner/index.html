@@ -1,25 +1,62 @@
 <!doctype html>
 <html ng-app="codeRunner">
   <head>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="src/vendor/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" type="text/css" href="css/monokai.css">
+
+    <script src="src/vendor/codemirror/lib/codemirror.js"></script>
+    <script src="src/vendor/codemirror/mode/clike/clike.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="src/vendor/angular-ui-codemirror/ui-codemirror.min.js"></script>
     <script src="app.js"></script>
     <script src="homeCtrl.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
   </head>
   <body ng-controller="homeCtrl">
-    <div>
-      <p>
-        Code to run:
-      </p>
-      <form>
-        <textarea rows="30" cols="80" ng-model="code"></textarea>
-        <br>
-        <input type="submit" ng-click="sendCode()">
-      </form>
-      <br>
-      <br>
+    <div class="container">
 
-      <b>Output:</b>  <pre>{{stdout.data}}</pre>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="title">
+            Code Runner
+            <small>With syntax highlight *</small>
+          </h1>
+        </div>
+      </div>
+
+      <div class="row top-margin">
+
+        <div class="col-md-6">
+          <div class="window">
+            <div class="window-header">
+              <div class="action-buttons"></div>
+              <select class="language">
+                <option value="java" selected>Java</option>
+                <option value="php">PHP</option>
+              </select>
+            </div>
+            <div class="window-body">
+              <ui-codemirror ui-codemirror-opts="editorOptions" ng-model="code"></ui-codemirror>
+            </div>
+          </div>
+          <div class="text-center" style="margin-top: 20px">
+            <button class="btn btn-info" ng-click="sendCode()">Compile and run</button>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <pre>{{stdout.data}}</pre>
+        </div>
+      </div>
+
 
     </div>
+
+
   </body>
 </html>
